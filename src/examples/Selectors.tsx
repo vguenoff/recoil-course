@@ -12,6 +12,15 @@ import {
 import { ArrowRight } from 'react-feather'
 import { atom, selector, useRecoilValue, useRecoilState } from 'recoil'
 
+// Util funcs
+const addCommission = (amount: number, commission: number) => {
+    return amount / (1 - commission / 100)
+}
+
+const removeCommission = (amount: number, commission: number) => {
+    return amount * (1 - commission / 100)
+}
+
 const exchangeRate = 0.83
 
 const usdAtom = atom({
@@ -161,12 +170,4 @@ const Commission = () => {
             </NumberInput>
         </Box>
     )
-}
-
-const addCommission = (amount: number, commission: number) => {
-    return amount / (1 - commission / 100)
-}
-
-const removeCommission = (amount: number, commission: number) => {
-    return amount * (1 - commission / 100)
 }
